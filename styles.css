@@ -31,6 +31,7 @@ html {
 }
 
 body {
+    zoom: 90%;
     min-height: 100vh;
     background: url("/imagens/pattern.png");
     background-size: cover;
@@ -244,9 +245,28 @@ h1, h2, h3, h4, h5, h6 {
 
     .app__title {
         font-size: 2.6rem;
+        text-align: center;
     }
 
     .app__card-timer {
         font-size: 6rem;
+    }
+
+    .app__footer-text {
+        font-size: 1.3rem;
+        margin-top: -50px;
+
+    }
+
+    .app__card-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .toggle {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .app__card-primary-button {
+        -webkit-tap-highlight-color: transparent;
     }
 }

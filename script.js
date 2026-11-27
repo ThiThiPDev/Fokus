@@ -30,18 +30,21 @@ musicaFocoInput.addEventListener('change', () => {
 })
 
 focoBt.addEventListener('click', () => {
+    zerar()
     tempoDecorridoEmSegundos = 1500
     alterarContexto('foco')
     focoBt.classList.add('active')
 })
 
 curtoBt.addEventListener('click', () => {
+    zerar()
     tempoDecorridoEmSegundos = 300
     alterarContexto('descanso-curto')
     curtoBt.classList.add('active')
 })
 
 longoBt.addEventListener('click', () => {
+    zerar()
     tempoDecorridoEmSegundos = 900
     alterarContexto('descanso-longo')
     longoBt.classList.add('active')
@@ -76,12 +79,25 @@ function alterarContexto(contexto) {
 }
 
 const contagemRegressiva = () => {
-    if(tempoDecorridoEmSegundos <= 0) {
-        audioTempoFinalizado.play();  // áudio executado quando cronômetro finalizar
-        alert('Tempo finalizado')
+    if (tempoDecorridoEmSegundos <= 0) {
         zerar()
+        audioTempoFinalizado.play()
+
+        setTimeout(() => {
+            if (html.getAttribute('data-contexto') === 'foco') {
+                tempoDecorridoEmSegundos = 1500
+            } else if (html.getAttribute('data-contexto') === 'descanso-curto') {
+                tempoDecorridoEmSegundos = 300
+            } else if (html.getAttribute('data-contexto') === 'descanso-longo') {
+                tempoDecorridoEmSegundos = 900
+            }
+
+            mostrarTempo()
+        }, 6000)
+
         return
     }
+
     tempoDecorridoEmSegundos -= 1
     mostrarTempo()
 }
